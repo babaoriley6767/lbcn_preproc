@@ -180,6 +180,8 @@ if ~plot_params.single_trial
         time_events = plot_params.xlines;
     end
     
+    time_events = time_events/10;
+    
     if ~isempty(time_events)
         for i = 1:length(time_events)
             plot([time_events(i) time_events(i)],y_lim,'Color', [.5 .5 .5], 'LineWidth',1)

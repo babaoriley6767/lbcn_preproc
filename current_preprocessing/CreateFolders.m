@@ -7,7 +7,8 @@ function CreateFolders(sbj_name, project_name, block_name, center, dirs, data_fo
 % else
 %     sbj_name_generic = sbj_name;
 % end
-
+% 
+% --
 sbj_name_generic = sbj_name;
 
 
@@ -46,6 +47,7 @@ for i = 1:length(fieldname_folders)
     end
 end
 
+%% --
 
 
 for bn = 1:length(block_name)

@@ -1,4 +1,4 @@
-function  xcorr_all =laggedCorrPerm(sbj_name,project_name,block_names,dirs,elecs1,elecs2,freqband,xcorr_params,column,conds)
+function  xcorr_all = laggedCorrPerm(sbj_name,project_name,block_names,dirs,elecs1,elecs2,freqband,xcorr_params,column,conds)
 % This function quantifies the similarity between the trial-by-trial
 % responses of pairs of electrodes by computing the cross-correlation 
 % between each pair of electrodes, and comparing the magnitude
@@ -198,10 +198,10 @@ for e1 = 1:length(elecs1)
     end
 end
 
-dir_out = [dirs.result_root,filesep,project_name,filesep,sbj_name,filesep];
-if ~exist([dir_out,'ROL'])
-    mkdir(dir_out,'ROL')
-end
-
-save([dir_out,'ROL',filesep,'permuted_xcorr_',sbj_name,'_',freqband, [num2str(elecs1) num2str(elecs1)], '5s.mat'],'xcorr_all','xcorr_params')
+% dir_out = [dirs.result_root,filesep,project_name,filesep,sbj_name,filesep];
+% if ~exist([dir_out,'ROL'])
+%     mkdir(dir_out,'ROL')
+% end
+% 
+% save([dir_out,'ROL',filesep,'permuted_xcorr_',sbj_name,'_',freqband, [num2str(elecs1) num2str(elecs1)], '5s.mat'],'xcorr_all','xcorr_params')
 

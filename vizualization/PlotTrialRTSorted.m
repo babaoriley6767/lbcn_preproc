@@ -94,17 +94,23 @@ for ci = 1:ncategs
 end
 
 % smooth and plot data
-figureDim = [0 0 .4 1];
-figure('units', 'normalized', 'outerposition', figureDim)
-
+if plot_params.set_figure == 1
+    figureDim = [0 0 .4 1];
+    figure('units', 'normalized', 'outerposition', figureDim)
+else
+end
 
 % hold on
 for ci = 1:ncategs
     %     if plot_params.single_trial
-    subplot(ncategs,1,ci)
+    if ncategs > 1
+        subplot(ncategs,1,ci)
+    else
+    end
     clims = [-prctile(plot_data{ci}(:),97.5) prctile(plot_data{ci}(:),97.5)];
     if size(plot_data{ci},1)>1
-        h = imagesc(data.time,1:size(plot_data{ci},1),plot_data{ci},clims);
+%         h = imagesc(data.time,1:size(plot_data{ci},1),plot_data{ci},clims);
+        imagesc(data.time,1:size(plot_data{ci},1),plot_data{ci},clims);
         colormap(cmap)
         hold on
         plot(trial_data{ci}.RTLock,1:size(plot_data{ci},1),'.', 'MarkerSize', 10, 'Color', 'k')

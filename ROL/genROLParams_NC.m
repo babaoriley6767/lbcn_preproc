@@ -5,7 +5,7 @@ function ROL_params = genROLParams_NC(project_name)
 % edited by Chao on May. 13, 2020
 % the reason that Chao did it is to make it adapted to Pedro's pipeline
 switch project_name
-    case {'race_encoding_simple', 'MMR'}
+    case {'race_encoding_simple', 'MMR', 'UCLA'}
         % Set ROL parameters
         ROL_params = struct;
         ROL_params.thr_value = 1; % How many SD over baseline period

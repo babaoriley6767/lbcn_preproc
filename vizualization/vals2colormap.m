@@ -36,7 +36,7 @@ if ~iscell(vals)
     % Generate the colormap
 %     cmap = eval([colormap '(256)']);
     cmap = cbrewer2(colormap, 256);
-    cmap = flip(cmap);
+%     cmap = flip(cmap);
     % Normalize the values to be between 1 and 256
     vals(vals < crange(1)) = crange(1);
     vals(vals > crange(2)) = crange(2);

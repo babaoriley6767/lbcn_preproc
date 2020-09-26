@@ -15,7 +15,10 @@ if ~isfield(concat_params, 'data_format')
 else
 end
 data_sbj = ConcatenateAll(sbj_name,project_name,block_names,dirs,[],datatype,freq_band,tag, concat_params);
-
+if strcmp(tag, 'resp')
+    data_sbj_baseline = ConcatenateAll(sbj_name,project_name,block_names,dirs,[],datatype,freq_band,'stim', concat_params);
+else
+end
 
 % Average data and baseline windows
 data_all_avg = [];
@@ -41,10 +44,20 @@ for ii = 1:length(conds)
     data_all.(conds{ii}) = data_tmp;
 end
 
-if strcmp(datatype, 'Band')
-    baseline_all = nanmean(data_sbj.(data_field)(:,:,baseline_win),3);
+if strcmp(tag, 'stim')
+    if strcmp(datatype, 'Band')
+        baseline_all = nanmean(data_sbj.(data_field)(:,:,baseline_win),3);
+    else
+        baseline_all = nanmedian(data_sbj.(data_field)(:,:,:,baseline_win),4);
+    end
+    
+elseif  strcmp(tag, 'resp')
+    if strcmp(datatype, 'Band')
+        baseline_all = nanmean(data_sbj_baseline.(data_field)(:,:,baseline_win),3);
+    else
+        baseline_all = nanmedian(data_sbj_baseline.(data_field)(:,:,:,baseline_win),4);
+    end
 else
-    baseline_all = nanmedian(data_sbj.(data_field)(:,:,:,baseline_win),4);
 end
 
 % Define channele neighbourhood - WORK ON THAT! 

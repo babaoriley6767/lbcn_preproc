@@ -46,9 +46,11 @@ if plot_flag
     plot_params = genPlotParams(project_name,'timecourse');
     plot_params.noise_method = 'trials'; %'trials','timepts','none'
     plot_params.noise_fields_trials = {'bad_epochs_HFO','bad_epochs_raw_HFspike'};
-    
+    plot_params.xlim = [ -0.2000    5]
 %     plot_params.xlim = [-5 1]
-    PlotTrialAvgAll(sbj_name,project_name,block_names,dirs,[],'HFB','stim','condNames',[],plot_params,'Band') % condNames
+%     PlotTrialAvgAll(sbj_name,project_name,block_names,dirs,[],'HFB','stim','condNames',[],plot_params,'Band') % condNames
+    PlotTrialAvgAll(sbj_name,project_name,block_names,dirs,[],'HFB','stim','correctness',{'correct', 'incorrect'},plot_params,'Band') % condNames
+
     %
     % plot ERSP (event-related spectral perturbations) for each electrode
 %     disp(['plotting subject ' sbj_name ' SpecDense'])
